@@ -1,5 +1,5 @@
-player1_name= localStorage.getItem("Player 1");
-player2_name= localStorage.getItem("Player 2");
+player1_name= localStorage.getItem("Player 1").toUpperCase();
+player2_name= localStorage.getItem("Player 2").toUpperCase();
 
 player1_score= 0;
 player2_score= 0;
@@ -12,6 +12,8 @@ document.getElementById("player2_score").innerHTML=player2_score;
 
 document.getElementById("player_q").innerHTML="Question turn: "+player1_name;
 document.getElementById("player_ans").innerHTML="Answer turn: "+player2_name;
+
+remark="";
 
 function send(){
     num1= document.getElementById("num1").value ;
@@ -28,3 +30,43 @@ function send(){
     document.getElementById("num1").value="";
     document.getElementById("num2").value="";
 }
+
+question_turn= "player1";
+answer_turn="player2";
+
+function check(){
+    get_ans= document.getElementById("ans").value;
+
+    if(get_ans == actual_ans){
+
+        if(answer_turn == "player1"){
+            player1_score +=1;
+            document.getElementById("player1_score").innerHTML= player1_score;
+        }else{
+            player2_score +=1;
+            document.getElementById("player2_score").innerHTML= player2_score;
+        }
+        remark="correct";
+    }else{
+        remark="wrong";
+    }
+    
+    if(question_turn == "player1"){
+        question_turn ="player2";
+        document.getElementById("player_q").innerHTML= "Question turn: "+player2_name;
+        document.getElementById("player_ans").innerHTML="Answer turn: "+player1_name;
+    }else{
+        question_turn ="player1";
+        document.getElementById("player_q").innerHTML= "Question turn: "+player1_name;
+        document.getElementById("player_ans").innerHTML="Answer turn: "+player2_name;
+    }
+    document.getElementById("output").innerHTML="";
+   
+    if(remark == "correct"){
+        alert('Correct Answer...Well done!!  :)');
+      } if(remark == "wrong"){
+        alert('Wrong answer...Better luck next time  :(');
+      }
+}
+
+
