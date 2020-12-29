@@ -53,10 +53,12 @@ function check(){
     
     if(question_turn == "player1"){
         question_turn ="player2";
+        answer_turn="player1";
         document.getElementById("player_q").innerHTML= "Question turn: "+player2_name;
         document.getElementById("player_ans").innerHTML="Answer turn: "+player1_name;
     }else{
         question_turn ="player1";
+        answer_turn="player2";
         document.getElementById("player_q").innerHTML= "Question turn: "+player1_name;
         document.getElementById("player_ans").innerHTML="Answer turn: "+player2_name;
     }
